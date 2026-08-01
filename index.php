@@ -1,5 +1,6 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) session_start();
+require_once 'includes/auth.php';
 
 // Kalau sudah login, langsung lempar ke dashboard sesuai role
 if (isset($_SESSION['role'])) {
@@ -20,15 +21,17 @@ $errorMsg = [
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Login - Absensi QR Code</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login - Absensi QR Code | <?= htmlspecialchars(NAMA_SEKOLAH) ?></title>
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 <div class="login-wrap">
     <div class="login-box">
+        <img src="assets/img/deha.svg" alt="Logo <?= htmlspecialchars(NAMA_SEKOLAH) ?>" class="login-logo">
         <h1>Absensi QR Code</h1>
-        <p class="sub">Silakan login sesuai akun Anda</p>
-
+        <h3><?= htmlspecialchars(NAMA_SEKOLAH) ?></h3>
+        <p class="sub"> Tahun Pelajaran <?= htmlspecialchars(TAHUN_PELAJARAN) ?></p>
         <?php if ($errorMsg): ?>
             <div class="alert alert-error"><?= htmlspecialchars($errorMsg) ?></div>
         <?php endif; ?>
