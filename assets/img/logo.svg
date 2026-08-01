@@ -1,0 +1,6 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="60" cy="60" r="58" fill="#1e3a8a" stroke="#facc15" stroke-width="3"/>
+  <path d="M60 24c-14 8-14 30-14 30s0 22 14 30c14-8 14-30 14-30s0-22-14-30z" fill="none" stroke="#facc15" stroke-width="2.5"/>
+  <path d="M48 40c6-4 18-4 24 0M48 84c6 4 18 4 24 0" stroke="#facc15" stroke-width="2"/>
+  <text x="60" y="66" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#fff" text-anchor="middle">MDH</text>
+</svg>

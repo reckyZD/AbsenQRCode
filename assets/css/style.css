@@ -1,0 +1,185 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+html { -webkit-text-size-adjust: 100%; }
+body { background: #f2f4f8; color: #222; }
+img { max-width: 100%; }
+
+:root {
+    --sidebar-w: 240px;
+    --sidebar-w-collapsed: 76px;
+}
+
+/* ---------- Halaman Login ---------- */
+.login-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2563eb, #1e3a8a);
+    padding: 20px;
+}
+.login-box {
+    background: #fff;
+    width: 100%;
+    max-width: 400px;
+    padding: 36px 32px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+    text-align: center;
+}
+.login-logo { width: 100px; height: 120px; border: 2px solid #ddd; border-radius: 4px; padding: 1px; display: block; margin: 0 auto 14px; }
+.login-box h1,h3 { font-size: 19px; margin-bottom: 4px; color: #1e3a8a; line-height: 1.35; }
+.login-box p.sub { color: #666; font-size: 15px; text-align: center; margin-bottom: 22px; }
+.login-box form { text-align: justify; }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 13px; margin-bottom: 6px; font-weight: 600; color: #333; }
+.form-group input, .form-group select {
+    width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px;
+}
+.form-group input:focus, .form-group select:focus { outline: none; border-color: #2563eb; }
+.btn {
+    display: inline-block; background: #2563eb; color: #fff; border: none;
+    padding: 11px 18px; border-radius: 8px; font-size: 14px; font-weight: 600;
+    cursor: pointer; text-decoration: none; text-align: center;
+}
+.btn:hover { background: #1d4ed8; }
+.btn-block { width: 100%; }
+.btn-outline { background: #fff; color: #2563eb; border: 1px solid #2563eb; }
+.alert { padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 16px; text-align: left; }
+.alert-error { background: #fee2e2; color: #b91c1c; }
+.alert-success { background: #dcfce7; color: #15803d; }
+
+/* ---------- Layout Dashboard ---------- */
+.app-shell { display: flex; min-height: 100vh; position: relative; }
+
+.sidebar {
+    width: var(--sidebar-w);
+    background: #1e293b; color: #fff; flex-shrink: 0;
+    display: flex; flex-direction: column;
+    transition: width .2s ease, transform .25s ease;
+    position: relative;
+    z-index: 40;
+}
+.sidebar.collapsed { width: var(--sidebar-w-collapsed); }
+.sidebar.collapsed .side-label,
+.sidebar.collapsed .side-schoolname,
+.sidebar.collapsed .side-username,
+.sidebar.collapsed .side-role,
+.sidebar.collapsed .edit-profil-link,
+.sidebar.collapsed .sidebar-header h2 { display: none; }
+.sidebar.collapsed .profile-square { width: 42px; height: 42px; font-size: 16px; }
+.sidebar.collapsed .nav-link { justify-content: center; }
+
+.sidebar-header {
+    padding: 16px; border-bottom: 1px solid #334155;
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.sidebar-header h2 { font-size: 15px; white-space: nowrap; }
+.sidebar-toggle-btn {
+    background: transparent; border: 1px solid #475569; color: #cbd5e1;
+    font-size: 16px; cursor: pointer; padding: 5px 9px; border-radius: 6px; flex-shrink: 0;
+}
+.sidebar-toggle-btn:hover { background: #334155; }
+
+.sidebar-profile { padding: 20px 14px; text-align: center; border-bottom: 1px solid #334155; }
+.profile-square {
+    width: 84px; height: 84px; border-radius: 14px; overflow: hidden;
+    margin: 0 auto 10px; border: 2px solid #475569; background: #334155;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; font-weight: 700; color: #fff;
+}
+.profile-square img { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
+.side-username { font-size: 14px; font-weight: 600; margin-bottom: 2px; word-break: break-word; }
+.side-role { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+.side-schoolname { font-size: 11px; color: #facc15; line-height: 1.3; font-weight: 600; }
+.edit-profil-link { display: inline-block; margin-top: 10px; font-size: 12px; color: #93c5fd; text-decoration: none; }
+.edit-profil-link:hover { text-decoration: underline; }
+
+.sidebar nav { flex: 1; padding: 10px 0; overflow-y: auto; }
+.sidebar a.nav-link {
+    display: flex; align-items: center; gap: 10px; color: #cbd5e1; text-decoration: none;
+    padding: 12px 18px; font-size: 14px; white-space: nowrap;
+}
+.sidebar a.nav-link:hover, .sidebar a.nav-link.active { background: #334155; color: #fff; }
+.sidebar .logout-link { color: #f87171 !important; border-top: 1px solid #334155; }
+
+.sidebar-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 35; }
+.sidebar-backdrop.show { display: block; }
+
+.mobile-topbar-toggle {
+    display: none; position: fixed; top: 14px; left: 14px; z-index: 45;
+    width: 42px; height: 42px; border-radius: 10px; border: none;
+    background: #1e293b; color: #fff; font-size: 19px; cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0,0,0,.25);
+    align-items: center; justify-content: center;
+}
+
+.main { flex: 1; padding: 28px 34px; min-width: 0; }
+.topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+.topbar h1 { font-size: 20px; color: #1e293b; word-break: break-word; }
+.topbar-right { display: flex; align-items: center; gap: 10px; }
+.topbar-avatar {
+    width: 34px; height: 34px; border-radius: 8px; overflow: hidden; flex-shrink: 0;
+    background: #2563eb; color: #fff; display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700;
+}
+.topbar-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.badge-role { background: #2563eb; color: #fff; font-size: 11px; padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
+
+.card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,.05); margin-bottom: 20px; }
+.card h3 { font-size: 15px; margin-bottom: 14px; color: #1e293b; }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-bottom: 20px; }
+.stat-box { background: #fff; padding: 18px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.stat-box .num { font-size: 26px; font-weight: 700; color: #2563eb; }
+.stat-box .label { font-size: 12px; color: #666; margin-top: 4px; }
+
+.card { overflow-x: auto; }
+table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 13px; }
+table th, table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #eee; }
+table th { background: #f8fafc; font-weight: 600; color: #444; }
+
+.status-hadir { color: #15803d; font-weight: 600; }
+.status-telat { color: #b45309; font-weight: 600; }
+.status-aktif { color: #2563eb; font-weight: 600; }
+.status-selesai { color: #666; }
+
+#qr-reader { width: 100%; max-width: 360px; margin: 0 auto; }
+.qr-box { text-align: center; padding: 20px; }
+
+/* ---------- Profil (edit foto) ---------- */
+.profil-photo-preview {
+    width: 140px; height: 140px; border-radius: 16px; overflow: hidden;
+    background: #e5e7eb; border: 2px dashed #cbd5e1; margin: 0 auto 16px;
+    display: flex; align-items: center; justify-content: center; font-size: 40px; color: #94a3b8; font-weight: 700;
+}
+.profil-photo-preview img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- Responsive: tablet & mobile ---------- */
+@media (max-width: 900px) {
+    .sidebar {
+        position: fixed; top: 0; left: 0; height: 100vh;
+        transform: translateX(-100%);
+        width: 250px;
+    }
+    .sidebar.mobile-open { transform: translateX(0); }
+    .sidebar.collapsed { width: 250px; }
+    .sidebar.collapsed .side-label,
+    .sidebar.collapsed .side-schoolname,
+    .sidebar.collapsed .side-username,
+    .sidebar.collapsed .side-role,
+    .sidebar.collapsed .edit-profil-link,
+    .sidebar.collapsed .sidebar-header h2 { display: block; }
+    .sidebar.collapsed .profile-square { width: 84px; height: 84px; font-size: 28px; }
+    .sidebar.collapsed .nav-link { justify-content: flex-start; }
+    .sidebar-toggle-btn { display: none; }
+
+    .main { margin-left: 0 !important; width: 100%; padding: 70px 18px 24px; }
+    .mobile-topbar-toggle { display: flex; }
+
+    .login-box { padding: 28px 22px; }
+}
+
+@media (max-width: 560px) {
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .topbar h1 { font-size: 17px; }
+    .card { padding: 16px; }
+}
