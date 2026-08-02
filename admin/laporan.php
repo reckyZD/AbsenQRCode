@@ -71,7 +71,7 @@ $kelasList = $pdo->query("SELECT * FROM kelas ORDER BY nama_kelas")->fetchAll();
         </div>
 
         <div class="card">
-            <h3>Hasil (<?= count($data) ?> siswa) — Tanggal <?= htmlspecialchars($tglFilter) ?></h3>
+            <h3>Hasil (<?= count($data) ?> siswa) — Tanggal <?= $tglFilter ? date('d/m/Y', strtotime($tglFilter)) : '-' ?></h3>
             <table>
                 <tr>
                     <th>Nama</th><th>NIS</th><th>Kelas</th>
