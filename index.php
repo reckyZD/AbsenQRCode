@@ -26,6 +26,10 @@ $errorMsg = [
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+<div class="container">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
 <div class="login-wrap">
     <div class="login-box">
         <img src="assets/img/deha.svg" alt="Logo <?= htmlspecialchars(NAMA_SEKOLAH) ?>" class="login-logo">
@@ -48,6 +52,8 @@ $errorMsg = [
             <button type="submit" class="btn btn-block">Login</button>
         </form>
     </div>
+</div>
+
 </div>
 </body>
 </html>
